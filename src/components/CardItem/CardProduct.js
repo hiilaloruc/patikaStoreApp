@@ -10,7 +10,7 @@ const CardProduct = ({product}) => {
       <View style={styles.inner_container}>
         <Text style={styles.title}>{product.title}</Text>
         <View style={styles.subInfo}>
-          <Text style={styles.noStock}>{product.category}</Text>
+          <Text style={styles.categoryInfo}>{product.category}</Text>
           <View style={styles.ratingContainer}>
             <Star score={product.rating.rate} style={styles.starStyle} />
             <Text style={styles.ratingCount}>({product.rating.count})</Text>

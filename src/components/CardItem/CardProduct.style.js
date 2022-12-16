@@ -35,7 +35,7 @@ export default StyleSheet.create({
     margin: 5,
     justifyContent: 'space-between',
   },
-  noStock: {
+  categoryInfo: {
     alignSelf: 'flex-start',
     fontSize: 12,
     color: '#727272',
