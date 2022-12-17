@@ -1,5 +1,9 @@
 import {Dimensions, StyleSheet} from 'react-native';
 export default StyleSheet.create({
+  touchable: {
+    flex: 1,
+    width: Dimensions.get('window').width / 2,
+  },
   container: {
     flex: 1,
     backgroundColor: 'white',
