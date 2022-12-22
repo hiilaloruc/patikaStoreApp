@@ -34,8 +34,9 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
     fontSize: 15,
     color: '#727272',
-    fontWeight: 'bold',
     backgroundColor: '#f1f1f1',
+    fontWeight: 'bold',
+
     borderRadius: 5,
     padding: 3,
     marginTop: 15,
