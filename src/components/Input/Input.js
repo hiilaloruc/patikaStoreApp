@@ -11,6 +11,7 @@ const Input = ({placeholder, value, onType, isSecure}) => {
       onChangeText={onType}
       value={value}
       secureTextEntry={isSecure ? true : false}
+      autoCapitalize="none"
     />
   );
 };

@@ -1,6 +1,8 @@
 import React from 'react';
-import {SafeAreaView, View, Text, Image, Alert} from 'react-native';
+import {SafeAreaView, View, Text, Image} from 'react-native';
 import {Formik} from 'formik';
+import {showMessage} from 'react-native-flash-message';
+import {useDispatch} from 'react-redux';
 import styles from './Login.style';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -8,23 +10,38 @@ import usePost from '../../hooks/usePost/usePost';
 
 const Login = ({navigation}) => {
   const {data, loading, error, post} = usePost();
+  const dispatch = useDispatch();
 
   function handleLogin(values) {
-    post('https://fakestoreapi.com/auth/login', values);
+    if (values.username !== '' && values.password !== '') {
+      post('https://fakestoreapi.com/auth/login', values);
+    } else {
+      showMessage({
+        message: 'Missing username or password.',
+        type: 'danger',
+      });
+    }
   }
 
   if (!loading) {
     if (data) {
       if (data.token !== undefined) {
-        navigation.navigate('ProductsPage');
-        //console.log('success..');
+        const token = data.token;
+        dispatch({type: 'SET_USER', payload: {token}});
+        //navigation.navigate('ProductsPage');
       } else {
-        Alert.alert('PatikaStore', 'Something went wrong..');
+        //Alert.alert('PatikaStore', 'Something went wrong..');
+        showMessage({
+          message: 'Something went wrong..',
+          type: 'danger',
+        });
       }
     } else {
       if (error) {
-        console.log('mistaken info..');
-        Alert.alert('PatikaStore', 'User not found.');
+        showMessage({
+          message: 'Incorrect username or password.',
+          type: 'danger',
+        });
       }
     }
   }
